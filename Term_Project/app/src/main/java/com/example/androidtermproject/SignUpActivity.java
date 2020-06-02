@@ -90,13 +90,13 @@ public class SignUpActivity extends AppCompatActivity {
         mDatabase.child("users").child(ID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue(User.class) != null) {
+                if(dataSnapshot.getValue(User.class) != null){
                     User post = dataSnapshot.getValue(User.class);
-                    if (ID.equals(post.userID)) {
+                    if(ID.equals(post.userID)) {
                         Toast.makeText(getApplicationContext(), "<중복된 아이디입니다>", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "<사용가능한 아이디입니다>", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                        Toast.makeText(getApplicationContext(), "<사용가능한 아이디입니다>", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -105,24 +105,5 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
-//        mDatabase.child("users").child(ID).addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if(dataSnapshot.getValue(User.class) != null){
-//                    User post = dataSnapshot.getValue(User.class);
-//                    if(ID.equals(post.userID)) {
-//                        Toast.makeText(getApplicationContext(), "<중복된 아이디입니다>", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                        Toast.makeText(getApplicationContext(), "<사용가능한 아이디입니다>", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 }

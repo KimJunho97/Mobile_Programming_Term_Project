@@ -237,6 +237,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 linearLayout.setVisibility(View.INVISIBLE);
                 capture();
+
             }
         });
 
@@ -263,6 +264,19 @@ public class RegisterPictureActivity extends AppCompatActivity {
                 linearLayout.setVisibility(View.INVISIBLE);
             }
         });
+
+        ///////////////////////////////// 옷 등록 버튼
+        Button register_cloth = (Button)findViewById(R.id.register_cloth);
+
+        register_cloth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "등록 완료",Toast.LENGTH_SHORT).show();
+                finish();
+
+            }
+        });
+
 
     }
     ////////////////////////////////여기 까지가 onCreate

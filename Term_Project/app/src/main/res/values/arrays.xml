@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <array name="cloth_list">
+        <item>@drawable/cloth_pants</item>
+        <item>@drawable/cloth_pants2</item>
+        <item>@drawable/cloth_pants3</item>
+        <item>@drawable/cloth_pants4</item>
+        <item>@drawable/cloth_pants5</item>
+        <item>@drawable/cloth_pants6</item>
+        <item>@drawable/cloth_pants7</item>
+        <item>@drawable/cloth_pants8</item>
+    </array>
+
     <string-array name="cloth_category1">
         <item>(선택)</item>
         <item>상의</item>
@@ -56,6 +68,31 @@
         <item>기타</item>
     </string-array>
 
+
+    <string-array name="cloth_top_top">
+        <item>(선택)</item>
+        <item>나시</item>
+        <item>반팔</item>
+        <item>맨투맨</item>
+        <item>니트</item>
+        <item>셔츠</item>
+        <item>남방</item>
+        <item>후드티</item>
+        <item>기타</item>
+    </string-array>
+
+
+    <string-array name="cloth_top_outer">
+        <item>(선택)</item>
+        <item>후드집업</item>
+        <item>가디건</item>
+        <item>자켓</item>
+        <item>야상</item>
+        <item>코트</item>
+        <item>패딩</item>
+        <item>기타</item>
+    </string-array>
+
     <string-array name="color">
         <item>(선택)</item>
         <item>빨강색</item>
@@ -79,5 +116,12 @@
         <item>데이트</item>
         <item></item>
     </string-array>
+
+
+    <string-array name="all">
+        <item>(선택)</item>
+        <item>(전체)</item>
+    </string-array>
+
 
 </resources>

@@ -32,5 +32,23 @@
     <string name="cancel">취소</string>
     <string name="findId">아이디 찾기</string>
     <string name="findPassword">비밀번호 찾기</string>
+    <string name="pants">하의</string>
+    <string name="top">상의</string>
+    <string name="outer">아우터</string>
+    <string name="shoes">신발</string>
+    <string name="favorite">즐겨찾기</string>
+    <string name="check">확인</string>
+    <string name="type">옷 종류</string>
+    <string name="add_cloth">옷 추가</string>
+    <string name="category_txt">Category</string>
+    <string name="color_txt">Color</string>
+    <string name="style_txt">Style</string>
+    <string name="reset_btn">초기화</string>
+    <string name="done_btn">완료</string>
+    <string name="change_btn1_1">코디 보기</string>
+    <string name="change_btn1_2">돌아가기</string>
+    <string name="change_face">얼굴 바꾸기</string>
+    <string name="go_back_state">되돌리기</string>
+    <string name="save_cody">저장하기</string>
 
 </resources>

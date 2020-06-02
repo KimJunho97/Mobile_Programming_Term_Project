@@ -25,12 +25,21 @@ public class ChoiceActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), bundle.getString("id")+ "님 로그인 되셨습니다.", Toast.LENGTH_SHORT).show();
 
-        Button button = (Button)findViewById(R.id.btn_closet);
+        Button button1 = (Button)findViewById(R.id.btn_closet);
+        Button button2 = (Button)findViewById(R.id.btn_cody);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),RegisterPictureActivity.class);
+                Intent intent = new Intent(getApplicationContext(),ClosetActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),CodyActivity.class);
                 startActivity(intent);
             }
         });

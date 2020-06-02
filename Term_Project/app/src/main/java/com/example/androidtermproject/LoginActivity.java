@@ -28,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 
         final Button btn_signUp = (Button)findViewById(R.id.btn_register);
         final Button btn_login = (Button)findViewById(R.id.btn_login);
+        final Button btn_find_id = (Button)findViewById(R.id.find_id);
+        final Button btn_find_password = (Button)findViewById(R.id.find_password);
+
         edit_id = (EditText)findViewById(R.id.edit_id);
         edit_password = (EditText)findViewById(R.id.edit_password);
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -36,6 +39,22 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_find_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),FindIdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_find_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),FindPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void readUser(final String ID) {
-        mDatabase.child("users").child(ID).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users").child(ID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getValue(User.class) != null){
