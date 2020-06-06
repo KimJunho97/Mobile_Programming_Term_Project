@@ -21,7 +21,11 @@
         <activity android:name=".ChoiceActivity" />
         <activity android:name=".ClosetActivity"/>
         <activity android:name=".CodyActivity"/>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

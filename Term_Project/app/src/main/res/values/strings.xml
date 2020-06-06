@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">androidTermProject</string>
+    <string name="app_name">CloseT</string>
     <string name="login">로그인</string>
     <string name="register">회원가입</string>
     <string name="find_id">아이디 찾기</string>
