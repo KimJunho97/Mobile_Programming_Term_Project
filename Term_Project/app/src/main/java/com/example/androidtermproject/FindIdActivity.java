@@ -26,6 +26,9 @@ public class FindIdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_id);
 
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_find_id);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         name = (EditText)findViewById(R.id.name_input);
         email = (EditText)findViewById(R.id.email_input);
