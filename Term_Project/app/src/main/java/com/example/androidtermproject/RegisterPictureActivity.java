@@ -135,6 +135,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
 
         final String[] cloth_category1 = getResources().getStringArray(R.array.cloth_category1);
         final String[] cloth_top = getResources().getStringArray(R.array.cloth_top);
+        final String[] cloth_outer = getResources().getStringArray(R.array.cloth_top_outer);
         final String[] cloth_pants = getResources().getStringArray(R.array.cloth_pants);
         final String[] shoes = getResources().getStringArray(R.array.shoes);
         final String[] colors = getResources().getStringArray(R.array.color);
@@ -162,7 +163,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         ArrayAdapter<String> category1_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_category1);
         category1_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         category1.setAdapter(category1_adapter);
-        category1.setPrompt("옷중류1");
+        category1.setPrompt("옷중류");
 
         category1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -171,6 +172,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                 String top_str = "상의";
                 String pants_str = "하의";
                 String shoes_str = "신발";
+                String outer_str = "아우터";
                 String not_selected_str = "(선택)";
 
                 if (top_str.equals(category1.getSelectedItem().toString())) {
@@ -178,22 +180,32 @@ public class RegisterPictureActivity extends AppCompatActivity {
                     ArrayAdapter<String> cloth_top_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_top);
                     cloth_top_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_top_adapter);
-                } else if (pants_str.equals(category1.getSelectedItem().toString())) {
+                }
+                else if (pants_str.equals(category1.getSelectedItem().toString())) {
                     //하의 일 경우
                     ArrayAdapter<String> cloth_pants_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_pants);
                     cloth_pants_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_pants_adapter);
-                } else if (shoes_str.equals(category1.getSelectedItem().toString())) {
+                }
+                else if (shoes_str.equals(category1.getSelectedItem().toString())) {
                     //신발 일 경우
                     ArrayAdapter<String> shoes_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, shoes);
                     shoes_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(shoes_adapter);
-                } else if (not_selected_str.equals(category1.getSelectedItem().toString())) {
+                }
+                else if (outer_str.equals(category1.getSelectedItem().toString())) {
+                    //아우터 일 경우
+                    ArrayAdapter<String> cloth_outer_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_outer);
+                    cloth_outer_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                    category2.setAdapter(cloth_outer_adapter);
+                }
+                else if (not_selected_str.equals(category1.getSelectedItem().toString())) {
                     //아무것도 선택이 안되어 있을 경우
                     ArrayAdapter<String> not_selected_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, not_selected);
                     not_selected_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(not_selected_adapter);
                 }
+
 
             }
 
