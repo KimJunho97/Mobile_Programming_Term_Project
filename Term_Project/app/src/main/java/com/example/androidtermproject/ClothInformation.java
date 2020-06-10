@@ -32,9 +32,6 @@ public class ClothInformation extends AppCompatActivity {
 
         ImageView imageView = (ImageView)findViewById(R.id.information_cloth_picture);
 
-
-
-
         information_favorite_register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

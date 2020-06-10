@@ -29,7 +29,6 @@ public class ClosetActivity extends AppCompatActivity {
     LinearLayout page_pants;
     LinearLayout page_outer;
     LinearLayout page_shoes;
-    LinearLayout page_favorite;
 
 
     @Override
@@ -41,7 +40,6 @@ public class ClosetActivity extends AppCompatActivity {
         page_pants = (LinearLayout)findViewById(R.id.page_pants);
         page_outer = (LinearLayout)findViewById(R.id.page_outer);
         page_shoes = (LinearLayout)findViewById(R.id.page_shoes);
-        page_favorite = (LinearLayout)findViewById(R.id.page_favorite);
 
         Button btn_add_cloth = (Button)findViewById(R.id.btn_register_cloth);
 
@@ -55,7 +53,6 @@ public class ClosetActivity extends AppCompatActivity {
         Button check_pants = (Button)findViewById(R.id.check_pants);
         Button check_outer = (Button)findViewById(R.id.check_outer);
         Button check_shoes = (Button)findViewById(R.id.check_shoes);
-        Button check_favorite = (Button)findViewById(R.id.check_favorite);
 
         Spinner spinner_color_top = (Spinner)findViewById(R.id.spinner_color_top);
         Spinner spinner_type_top = (Spinner)findViewById(R.id.spinner_type_top);
@@ -69,9 +66,7 @@ public class ClosetActivity extends AppCompatActivity {
         Spinner spinner_color_shoes = (Spinner)findViewById(R.id.spinner_color_shoes);
         Spinner spinner_type_shoes = (Spinner)findViewById(R.id.spinner_type_shoes);
         Spinner spinner_style_shoes = (Spinner)findViewById(R.id.spinner_style_shoes);
-        Spinner spinner_color_favorite = (Spinner)findViewById(R.id.spinner_color_favorite);
-        Spinner spinner_type_favorite = (Spinner)findViewById(R.id.spinner_type_favorite);
-        Spinner spinner_style_favorite = (Spinner)findViewById(R.id.spinner_style_favorite);
+
 
         final String[] cloth_top = getResources().getStringArray(R.array.cloth_top_top);
         final String[] outer = getResources().getStringArray(R.array.cloth_top_outer);
@@ -135,14 +130,6 @@ public class ClosetActivity extends AppCompatActivity {
 
         spinner_style_shoes.setAdapter(style_adapter);
 
-        spinner_color_favorite.setAdapter(color_adapter);
-
-        ArrayAdapter<String> favorite_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, every);
-        cloth_pants_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner_type_favorite.setAdapter(favorite_adapter);
-
-        spinner_style_favorite.setAdapter(style_adapter);
-
 
         btn_top.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +140,7 @@ public class ClosetActivity extends AppCompatActivity {
         check_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_visibility(5);
+                change_visibility(4);
             }
         });
 
@@ -166,7 +153,14 @@ public class ClosetActivity extends AppCompatActivity {
         check_pants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_visibility(5);
+                change_visibility(4);
+            }
+        });
+
+        btn_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                change_visibility(4);
             }
         });
 
@@ -179,7 +173,7 @@ public class ClosetActivity extends AppCompatActivity {
         check_outer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_visibility(5);
+                change_visibility(4);
             }
         });
 
@@ -192,22 +186,10 @@ public class ClosetActivity extends AppCompatActivity {
         check_shoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_visibility(5);
-            }
-        });
-
-        btn_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 change_visibility(4);
             }
         });
-        check_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                change_visibility(5);
-            }
-        });
+
 
         btn_add_cloth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,7 +208,6 @@ public class ClosetActivity extends AppCompatActivity {
             page_pants.setVisibility(View.INVISIBLE);
             page_outer.setVisibility(View.INVISIBLE);
             page_shoes.setVisibility(View.INVISIBLE);
-            page_favorite.setVisibility(View.INVISIBLE);
             page_top.bringToFront();
         }
         else if(index==1){
@@ -234,7 +215,6 @@ public class ClosetActivity extends AppCompatActivity {
             page_pants.setVisibility(View.VISIBLE);
             page_outer.setVisibility(View.INVISIBLE);
             page_shoes.setVisibility(View.INVISIBLE);
-            page_favorite.setVisibility(View.INVISIBLE);
             page_pants.bringToFront();
         }
         else if(index==2){
@@ -242,7 +222,6 @@ public class ClosetActivity extends AppCompatActivity {
             page_pants.setVisibility(View.INVISIBLE);
             page_outer.setVisibility(View.VISIBLE);
             page_shoes.setVisibility(View.INVISIBLE);
-            page_favorite.setVisibility(View.INVISIBLE);
             page_outer.bringToFront();
         }
         else if(index==3){
@@ -250,23 +229,14 @@ public class ClosetActivity extends AppCompatActivity {
             page_pants.setVisibility(View.INVISIBLE);
             page_outer.setVisibility(View.INVISIBLE);
             page_shoes.setVisibility(View.VISIBLE);
-            page_favorite.setVisibility(View.INVISIBLE);
             page_shoes.bringToFront();
         }
+
         else if(index==4){
             page_top.setVisibility(View.INVISIBLE);
             page_pants.setVisibility(View.INVISIBLE);
             page_outer.setVisibility(View.INVISIBLE);
             page_shoes.setVisibility(View.INVISIBLE);
-            page_favorite.setVisibility(View.VISIBLE);
-            page_favorite.bringToFront();
-        }
-        else if(index==5){
-            page_top.setVisibility(View.INVISIBLE);
-            page_pants.setVisibility(View.INVISIBLE);
-            page_outer.setVisibility(View.INVISIBLE);
-            page_shoes.setVisibility(View.INVISIBLE);
-            page_favorite.setVisibility(View.INVISIBLE);
         }
 
     }

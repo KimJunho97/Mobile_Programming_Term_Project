@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -70,6 +71,8 @@ public class RegisterPictureActivity extends AppCompatActivity {
     private File file;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
+    Uri temp;
+    Uri temp_getData;
     String mCurrentPhotoPath;
 
     /////////////////////////////////////////카메라에서 찍어서 올리기
@@ -116,6 +119,11 @@ public class RegisterPictureActivity extends AppCompatActivity {
 
     }
 
+    String name_str;
+    String category_str;
+    String detail_str;
+    String color_str;
+    String style_str;
 
     /////////////////////////////////////////////////기본 on create
     @Override
@@ -128,10 +136,14 @@ public class RegisterPictureActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},0);
         }
 
+
+
         final Spinner category1 = (Spinner) findViewById(R.id.category1);
         final Spinner category2 = (Spinner) findViewById(R.id.category2);
         final Spinner color = (Spinner) findViewById(R.id.color);
         final Spinner style = (Spinner) findViewById(R.id.style);
+
+        final EditText name = (EditText)findViewById(R.id.cloth_name);
 
         final String[] cloth_category1 = getResources().getStringArray(R.array.cloth_category1);
         final String[] cloth_top = getResources().getStringArray(R.array.cloth_top);
@@ -160,6 +172,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         });
 
 
+
         ArrayAdapter<String> category1_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_category1);
         category1_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         category1.setAdapter(category1_adapter);
@@ -180,32 +193,90 @@ public class RegisterPictureActivity extends AppCompatActivity {
                     ArrayAdapter<String> cloth_top_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_top);
                     cloth_top_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_top_adapter);
+
+                    category2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            detail_str = category2.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                 }
+
                 else if (pants_str.equals(category1.getSelectedItem().toString())) {
                     //하의 일 경우
                     ArrayAdapter<String> cloth_pants_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_pants);
                     cloth_pants_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_pants_adapter);
+                    category2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            detail_str = category2.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                 }
                 else if (shoes_str.equals(category1.getSelectedItem().toString())) {
                     //신발 일 경우
                     ArrayAdapter<String> shoes_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, shoes);
                     shoes_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(shoes_adapter);
+                    category2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            detail_str = category2.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                 }
                 else if (outer_str.equals(category1.getSelectedItem().toString())) {
                     //아우터 일 경우
                     ArrayAdapter<String> cloth_outer_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_outer);
                     cloth_outer_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_outer_adapter);
+                    category2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            detail_str = category2.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                 }
                 else if (not_selected_str.equals(category1.getSelectedItem().toString())) {
                     //아무것도 선택이 안되어 있을 경우
                     ArrayAdapter<String> not_selected_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, not_selected);
                     not_selected_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(not_selected_adapter);
+                    category2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            detail_str = category2.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                 }
 
+                category_str = category1.getSelectedItem().toString();
 
             }
 
@@ -221,11 +292,36 @@ public class RegisterPictureActivity extends AppCompatActivity {
         color.setAdapter(color_adapter);
         color.setPrompt("색깔");
 
+        color.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                color_str = color.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         //스타일
         ArrayAdapter<String> style_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, styles);
         style_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         style.setAdapter(style_adapter);
         style.setPrompt("스타일");
+
+        style.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                style_str = style.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         Button btn_register = (Button) findViewById(R.id.register_picture);
 
@@ -283,6 +379,30 @@ public class RegisterPictureActivity extends AppCompatActivity {
         register_cloth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                name_str = name.getText().toString();
+
+                /////////////////////////////////////////////////////////앨범에서 골랐을 때
+                StorageReference storageRef = storage.getReference();
+                temp = Uri.fromFile(new File(getPath(temp_getData)));
+                ////////////////////////////////////////////////////////////////////여기가 바뀐 부분이야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 뒤에 이름!!!!!!!!!!!
+                StorageReference riversRef = storageRef.child("images/"+category_str+"/"+detail_str+"/"+color_str+"/"+style_str+"/"+name_str);
+                UploadTask uploadTask = riversRef.putFile(temp);
+
+                // Register observers to listen for when the download is done or if it fails
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                        // ...
+                    }
+                });
+
                 Toast.makeText(getApplicationContext(), "등록 완료",Toast.LENGTH_SHORT).show();
                 finish();
 
@@ -302,29 +422,14 @@ public class RegisterPictureActivity extends AppCompatActivity {
         ///////////////////////////////////////////앨범에서 가져오기
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
+            //////////////////////////////////////이게 추가한 코드
+            temp_getData = data.getData();
             try {
 
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 ImageView imageView = (ImageView) findViewById(R.id.picture_cloth);
                 imageView.setImageBitmap(bitmap);
-                StorageReference storageRef = storage.getReference();
-                Uri file = Uri.fromFile(new File(getPath(selectedImage)));
-                StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
-                UploadTask uploadTask = riversRef.putFile(file);
-
-                // Register observers to listen for when the download is done or if it fails
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                        // ...
-                    }
-                });
+                //Uri file = Uri.fromFile(new File(getPath(selectedImage)));
 
 
             } catch (IOException e) {

@@ -87,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/type"
                     />
                 <Spinner
@@ -105,6 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/color"
                     />
                 <Spinner
@@ -123,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/style"
                     />
                 <Spinner
@@ -162,6 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/type"
                     />
                 <Spinner
@@ -180,6 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/color"
                     />
                 <Spinner
@@ -197,6 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/style"
                     />
                 <Spinner
@@ -233,6 +239,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/type"
                     />
                 <Spinner
@@ -250,6 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/color"
                     />
                 <Spinner
@@ -267,6 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/style"
                     />
                 <Spinner
@@ -303,6 +312,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/type"
                     />
                 <Spinner
@@ -320,6 +330,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/color"
                     />
                 <Spinner
@@ -337,6 +348,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
+                    android:textColor="@color/black"
                     android:text="@string/style"
                     />
                 <Spinner
@@ -356,76 +368,6 @@
                 />
         </LinearLayout>
 
-
-        <LinearLayout
-            android:visibility="invisible"
-            android:id="@+id/page_favorite"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:background="@color/white"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:text="@string/type"
-                    />
-                <Spinner
-                    android:id="@+id/spinner_type_favorite"
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="200dp"
-                    android:layout_height="25dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:text="@string/color"
-                    />
-                <Spinner
-                    android:id="@+id/spinner_color_favorite"
-                    android:layout_marginLeft="80dp"
-                    android:layout_width="200dp"
-                    android:layout_height="25dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:text="@string/style"
-                    />
-                <Spinner
-                    android:id="@+id/spinner_style_favorite"
-                    android:layout_marginLeft="60dp"
-                    android:layout_width="200dp"
-                    android:layout_height="25dp"
-                    />
-            </LinearLayout>
-            <Button
-                android:id="@+id/check_favorite"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/check"
-                />
-        </LinearLayout>
 
 
         <ScrollView

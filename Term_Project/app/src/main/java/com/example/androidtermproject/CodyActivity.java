@@ -88,7 +88,7 @@ public class CodyActivity extends AppCompatActivity {
     String[] detail_pants = {"(선택)","반바지","청바지","면바지","슬랙스","스키니","와이드","기타"};
     String[] detail_shoes = {"(선택)","슬리퍼","샌들","컨버스","운동화","구두","기타"};
     String[] detail_outer = {"(선택)","후드집업","가디건","자켓","야상","코트","패딩","기타"};
-    String[] detail_favorite = {"(선택)","(전체)"};
+    String[] string_favorite = {"(전체)"};
     String[] detail_not_selected = {"옷 종류(x)"};
 
     String[] color = {"(선택)","빨강색","주황색","노랑색","초록색","파랑색","남색","보라색","흰색","검은색","기타"};
@@ -123,43 +123,76 @@ public class CodyActivity extends AppCompatActivity {
                 String str_favorite = "즐겨찾기";
                 String str_not_selected = "(선택)";
 
-                if(str_top.equals(category_spinner.getSelectedItem().toString())){
+                if(str_favorite.equals(category_spinner.getSelectedItem().toString())){
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_top);
+                            getBaseContext(), android.R.layout.simple_spinner_item, string_favorite);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     detail_spinner.setAdapter(adapter);
+
+                    Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
+                            getBaseContext(), android.R.layout.simple_spinner_item, string_favorite);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    color_spinner.setAdapter(adapter1);
+
+                    Spinner style_spinner = (Spinner) findViewById(R.id.style_spinner);
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                            getBaseContext(), android.R.layout.simple_spinner_item, string_favorite);
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    style_spinner.setAdapter(adapter2);
+
                 }
-                else if(str_pants.equals(category_spinner.getSelectedItem().toString())){
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_pants);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    detail_spinner.setAdapter(adapter);
+
+                else{
+
+                    if(str_top.equals(category_spinner.getSelectedItem().toString())){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                getBaseContext(), android.R.layout.simple_spinner_item, detail_top);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        detail_spinner.setAdapter(adapter);
+                    }
+                    else if(str_pants.equals(category_spinner.getSelectedItem().toString())){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                getBaseContext(), android.R.layout.simple_spinner_item, detail_pants);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        detail_spinner.setAdapter(adapter);
+                    }
+                    else if(str_shoes.equals(category_spinner.getSelectedItem().toString())){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                getBaseContext(), android.R.layout.simple_spinner_item, detail_shoes);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        detail_spinner.setAdapter(adapter);
+                    }
+                    else if(str_outer.equals(category_spinner.getSelectedItem().toString())){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                getBaseContext(), android.R.layout.simple_spinner_item, detail_outer);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        detail_spinner.setAdapter(adapter);
+                    }
+
+                    else if (str_not_selected.equals(category_spinner.getSelectedItem().toString())) {
+                        //아무것도 선택이 안되어 있을 경우
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                getBaseContext(), android.R.layout.simple_spinner_item, detail_not_selected);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        detail_spinner.setAdapter(adapter);
+                    }
+
+                    Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
+                            getBaseContext(), android.R.layout.simple_spinner_item, color);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    color_spinner.setAdapter(adapter1);
+
+                    Spinner style_spinner = (Spinner) findViewById(R.id.style_spinner);
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                            getBaseContext(), android.R.layout.simple_spinner_item, style);
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    style_spinner.setAdapter(adapter2);
+
+
                 }
-                else if(str_shoes.equals(category_spinner.getSelectedItem().toString())){
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_shoes);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    detail_spinner.setAdapter(adapter);
-                }
-                else if(str_outer.equals(category_spinner.getSelectedItem().toString())){
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_outer);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    detail_spinner.setAdapter(adapter);
-                }
-                else if(str_favorite.equals(category_spinner.getSelectedItem().toString())){
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_favorite);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    detail_spinner.setAdapter(adapter);
-                }
-                else if (str_not_selected.equals(category_spinner.getSelectedItem().toString())) {
-                    //아무것도 선택이 안되어 있을 경우
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getBaseContext(), android.R.layout.simple_spinner_item, detail_not_selected);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    detail_spinner.setAdapter(adapter);
-                }
+
             }
 
             @Override
@@ -169,17 +202,6 @@ public class CodyActivity extends AppCompatActivity {
         });
 
 
-        Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, color);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        color_spinner.setAdapter(adapter1);
-
-        Spinner style_spinner = (Spinner) findViewById(R.id.style_spinner);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, style);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        style_spinner.setAdapter(adapter2);
 
         layoutCody = (LinearLayout)findViewById(R.id.codyImg_layout);
         layoutCloth = (RelativeLayout)findViewById(R.id.cloth_layout);
