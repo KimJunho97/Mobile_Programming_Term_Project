@@ -3,14 +3,25 @@ package com.example.androidtermproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class ClosetActivity extends AppCompatActivity {
 
@@ -19,6 +30,7 @@ public class ClosetActivity extends AppCompatActivity {
     LinearLayout page_outer;
     LinearLayout page_shoes;
     LinearLayout page_favorite;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +85,19 @@ public class ClosetActivity extends AppCompatActivity {
         GridView cloth_grid = findViewById(R.id.cloth_grid);
 
         cloth_grid.setAdapter(new ClothAdapter(this));
+
+        cloth_grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Toast.makeText(getApplicationContext(),"clicked position : " + i,Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(),ClothInformation.class);
+
+                startActivity(intent);
+
+            }
+        });
 
         ArrayAdapter<String> color_adapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,colors);
         color_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
