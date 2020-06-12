@@ -247,7 +247,7 @@ public class CodyActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"clicked position : " + i,Toast.LENGTH_SHORT).show();
 
-                    cloth_top_image.setImageResource(cloth_top_list.getResourceId(i,-1));
+                    cloth_pants_image.setImageResource(cloth_top_list.getResourceId(i,-1));
 
             }
         });

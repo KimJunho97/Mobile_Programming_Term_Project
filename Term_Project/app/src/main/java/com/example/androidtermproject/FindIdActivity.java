@@ -50,7 +50,7 @@ public class FindIdActivity extends AppCompatActivity {
         });
 
     }
-
+    
     private void readUser() {
         mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

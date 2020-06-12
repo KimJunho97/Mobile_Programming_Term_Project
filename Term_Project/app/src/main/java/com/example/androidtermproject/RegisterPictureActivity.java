@@ -431,7 +431,6 @@ public class RegisterPictureActivity extends AppCompatActivity {
                 imageView.setImageBitmap(bitmap);
                 //Uri file = Uri.fromFile(new File(getPath(selectedImage)));
 
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
