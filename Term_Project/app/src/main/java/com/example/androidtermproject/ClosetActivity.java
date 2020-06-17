@@ -29,6 +29,12 @@ public class ClosetActivity extends AppCompatActivity {
     LinearLayout page_pants;
     LinearLayout page_outer;
     LinearLayout page_shoes;
+
+    String using_category;
+    String using_detail;
+    String using_color;
+    String using_style;
+
     String id;
 
 
@@ -40,6 +46,7 @@ public class ClosetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         id = bundle.getString("id");
+
         page_top = (LinearLayout)findViewById(R.id.page_top);
         page_pants = (LinearLayout)findViewById(R.id.page_pants);
         page_outer = (LinearLayout)findViewById(R.id.page_outer);
@@ -58,18 +65,18 @@ public class ClosetActivity extends AppCompatActivity {
         Button check_outer = (Button)findViewById(R.id.check_outer);
         Button check_shoes = (Button)findViewById(R.id.check_shoes);
 
-        Spinner spinner_color_top = (Spinner)findViewById(R.id.spinner_color_top);
-        Spinner spinner_type_top = (Spinner)findViewById(R.id.spinner_type_top);
-        Spinner spinner_style_top = (Spinner)findViewById(R.id.spinner_style_top);
-        Spinner spinner_color_pants = (Spinner)findViewById(R.id.spinner_color_pants);
-        Spinner spinner_type_pants = (Spinner)findViewById(R.id.spinner_type_pants);
-        Spinner spinner_style_pants = (Spinner)findViewById(R.id.spinner_style_pants);
-        Spinner spinner_color_outer = (Spinner)findViewById(R.id.spinner_color_outer);
-        Spinner spinner_type_outer = (Spinner)findViewById(R.id.spinner_type_outer);
-        Spinner spinner_style_outer = (Spinner)findViewById(R.id.spinner_style_outer);
-        Spinner spinner_color_shoes = (Spinner)findViewById(R.id.spinner_color_shoes);
-        Spinner spinner_type_shoes = (Spinner)findViewById(R.id.spinner_type_shoes);
-        Spinner spinner_style_shoes = (Spinner)findViewById(R.id.spinner_style_shoes);
+        final Spinner spinner_color_top = (Spinner)findViewById(R.id.spinner_color_top);
+        final Spinner spinner_type_top = (Spinner)findViewById(R.id.spinner_type_top);
+        final Spinner spinner_style_top = (Spinner)findViewById(R.id.spinner_style_top);
+        final Spinner spinner_color_pants = (Spinner)findViewById(R.id.spinner_color_pants);
+        final Spinner spinner_type_pants = (Spinner)findViewById(R.id.spinner_type_pants);
+        final Spinner spinner_style_pants = (Spinner)findViewById(R.id.spinner_style_pants);
+        final Spinner spinner_color_outer = (Spinner)findViewById(R.id.spinner_color_outer);
+        final Spinner spinner_type_outer = (Spinner)findViewById(R.id.spinner_type_outer);
+        final Spinner spinner_style_outer = (Spinner)findViewById(R.id.spinner_style_outer);
+        final Spinner spinner_color_shoes = (Spinner)findViewById(R.id.spinner_color_shoes);
+        final Spinner spinner_type_shoes = (Spinner)findViewById(R.id.spinner_type_shoes);
+        final Spinner spinner_style_shoes = (Spinner)findViewById(R.id.spinner_style_shoes);
 
 
         final String[] cloth_top = getResources().getStringArray(R.array.cloth_top_top);
@@ -104,49 +111,232 @@ public class ClosetActivity extends AppCompatActivity {
         color_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_color_top.setAdapter(color_adapter);
 
+        spinner_color_top.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String color;
+                color = spinner_color_top.getSelectedItem().toString();
+                using_color = color;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         ArrayAdapter<String> cloth_top_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_top);
         cloth_top_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_type_top.setAdapter(cloth_top_adapter);
+
+        spinner_type_top.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_type_top.getSelectedItem().toString();
+                using_detail = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         ArrayAdapter<String> style_adapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,styles);
         style_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_style_top.setAdapter(style_adapter);
 
+        spinner_style_top.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_style_top.getSelectedItem().toString();
+                using_style = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //////////////////////////////////////////////////////////////////
+
         spinner_color_pants.setAdapter(color_adapter);
+
+        spinner_color_pants.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String color;
+                color = spinner_color_pants.getSelectedItem().toString();
+                using_color = color;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         ArrayAdapter<String> cloth_pants_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_pants);
         cloth_pants_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_type_pants.setAdapter(cloth_pants_adapter);
 
+        spinner_type_pants.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_type_pants.getSelectedItem().toString();
+                using_detail = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         spinner_style_pants.setAdapter(style_adapter);
 
+        spinner_style_pants.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_style_pants.getSelectedItem().toString();
+                using_style = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////
+
         spinner_color_outer.setAdapter(color_adapter);
+
+        spinner_color_outer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String color;
+                color = spinner_color_outer.getSelectedItem().toString();
+                using_color = color;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         ArrayAdapter<String> outer_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, outer);
         outer_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_type_outer.setAdapter(outer_adapter);
 
+        spinner_type_outer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_type_outer.getSelectedItem().toString();
+                using_detail = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         spinner_style_outer.setAdapter(style_adapter);
 
+        spinner_style_outer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_style_outer.getSelectedItem().toString();
+                using_style = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////
+
         spinner_color_shoes.setAdapter(color_adapter);
+
+        spinner_color_shoes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String color;
+                color = spinner_color_shoes.getSelectedItem().toString();
+                using_color = color;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         ArrayAdapter<String> shoes_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, shoes);
         shoes_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_type_shoes.setAdapter(shoes_adapter);
 
+        spinner_type_shoes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_type_shoes.getSelectedItem().toString();
+                using_detail = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         spinner_style_shoes.setAdapter(style_adapter);
+
+        spinner_style_shoes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String detail;
+                detail = spinner_style_shoes.getSelectedItem().toString();
+                using_style = detail;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////
 
 
         btn_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 change_visibility(0);
+                using_category = "상의";
             }
         });
         check_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 change_visibility(4);
+                Toast.makeText(getApplicationContext(), ""+using_category+"/"+using_detail+"/"+using_color+"/"+using_style,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -154,6 +344,7 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 change_visibility(1);
+                using_category = "하의";
             }
         });
         check_pants.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +365,7 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 change_visibility(2);
+                using_category = "아우터";
             }
         });
         check_outer.setOnClickListener(new View.OnClickListener() {
@@ -187,6 +379,7 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 change_visibility(3);
+                using_category="신발";
             }
         });
         check_shoes.setOnClickListener(new View.OnClickListener() {
