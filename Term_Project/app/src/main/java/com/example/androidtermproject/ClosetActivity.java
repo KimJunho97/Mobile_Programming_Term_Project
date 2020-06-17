@@ -29,6 +29,7 @@ public class ClosetActivity extends AppCompatActivity {
     LinearLayout page_pants;
     LinearLayout page_outer;
     LinearLayout page_shoes;
+    String id;
 
 
     @Override
@@ -36,6 +37,9 @@ public class ClosetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitiy_closet);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        id = bundle.getString("id");
         page_top = (LinearLayout)findViewById(R.id.page_top);
         page_pants = (LinearLayout)findViewById(R.id.page_pants);
         page_outer = (LinearLayout)findViewById(R.id.page_outer);
@@ -195,6 +199,9 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),RegisterPictureActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

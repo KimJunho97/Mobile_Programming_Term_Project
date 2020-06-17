@@ -70,6 +70,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
     private String absolutePath;
     private ProgressDialog uploading;
     private File file;
+    String id;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
     Uri temp;
@@ -379,7 +380,10 @@ public class RegisterPictureActivity extends AppCompatActivity {
                 name_str = name.getText().toString();
                 temp = Uri.fromFile(new File(getPath(temp_getData)));
                 StorageReference storageRef = storage.getReference();
-                StorageReference riversRef = storageRef.child("images/"+category_str+"/"+detail_str+"/"+color_str+"/"+style_str+"/"+name_str);
+                Intent intent = getIntent();
+                Bundle bundle = intent.getExtras();
+                id = bundle.getString("id");
+                StorageReference riversRef = storageRef.child(id+"/"+"closet"+"/"+category_str+"/"+detail_str+"/"+color_str+"/"+style_str+"/"+name_str);
                 UploadTask uploadTask = riversRef.putFile(temp);
 
                 // Register observers to listen for when the download is done or if it fails
@@ -395,7 +399,6 @@ public class RegisterPictureActivity extends AppCompatActivity {
                         // ...
                     }
                 });
-
                 Toast.makeText(getApplicationContext(), "등록 완료",Toast.LENGTH_SHORT).show();
                 finish();
 

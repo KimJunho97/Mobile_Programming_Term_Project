@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class ChoiceActivity extends AppCompatActivity {
 
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +23,10 @@ public class ChoiceActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.title_logo);
 
         Intent passed_intent = getIntent();
-
         Bundle bundle = new Bundle();
-
         bundle = passed_intent.getExtras();
-
-        Toast.makeText(getApplicationContext(), bundle.getString("id")+ "님 로그인 되셨습니다.", Toast.LENGTH_SHORT).show();
+        id = bundle.getString("id");
+        Toast.makeText(getApplicationContext(), id+ "님 로그인 되셨습니다.", Toast.LENGTH_SHORT).show();
 
         ImageButton button1 = (ImageButton)findViewById(R.id.btn_closet);
         ImageButton button2 = (ImageButton)findViewById(R.id.btn_cody);
@@ -36,6 +35,9 @@ public class ChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),ClosetActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
