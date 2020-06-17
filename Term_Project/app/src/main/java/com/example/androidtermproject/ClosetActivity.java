@@ -93,6 +93,8 @@ public class ClosetActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(),ClothInformation.class);
 
+                intent.putExtra("Index",i);
+
                 startActivity(intent);
 
             }

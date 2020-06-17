@@ -22,6 +22,8 @@ public class ClothInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cloth_information);
 
+        Constants constants = new Constants();
+
         Button information_favorite_register_btn = (Button)findViewById(R.id.information_favorite_register_btn);
         Button information_favorite_release_btn = (Button)findViewById(R.id.information_favorite_release_btn);
         final TextView information_favorite_star = (TextView)findViewById(R.id.information_favorite_star);
@@ -30,7 +32,15 @@ public class ClothInformation extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+
+        Bundle bundle = intent.getExtras();
+
+        int index = bundle.getInt("Index");
+
+
         ImageView imageView = (ImageView)findViewById(R.id.information_cloth_picture);
+
+        imageView.setImageResource(constants.mImages[index]);
 
         information_favorite_register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
