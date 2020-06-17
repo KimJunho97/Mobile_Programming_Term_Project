@@ -47,6 +47,11 @@ public class CodyActivity extends AppCompatActivity {
     private ProgressDialog uploading;
     private File file;
 
+    String using_category;
+    String using_detail;
+    String using_color;
+    String using_style;
+
     String mCurrentPhotoPath;
 
     /////////////////////////////////////////카메라에서 찍어서 올리기
@@ -99,10 +104,16 @@ public class CodyActivity extends AppCompatActivity {
     private View layoutCody;
     private View layoutCloth;
 
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cody);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        id = bundle.getString("id");
 
         final Spinner category_spinner = (Spinner) findViewById(R.id.category_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -146,28 +157,83 @@ public class CodyActivity extends AppCompatActivity {
                 else{
 
                     if(str_top.equals(category_spinner.getSelectedItem().toString())){
+                        using_category = "상의";
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                                 getBaseContext(), android.R.layout.simple_spinner_item, detail_top);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         detail_spinner.setAdapter(adapter);
+
+                        detail_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                String detail;
+                                using_detail = detail_spinner.getSelectedItem().toString();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
                     }
                     else if(str_pants.equals(category_spinner.getSelectedItem().toString())){
+                        using_category="하의";
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                                 getBaseContext(), android.R.layout.simple_spinner_item, detail_pants);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         detail_spinner.setAdapter(adapter);
+
+                        detail_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                String detail;
+                                using_detail = detail_spinner.getSelectedItem().toString();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
                     }
                     else if(str_shoes.equals(category_spinner.getSelectedItem().toString())){
+                        using_category="신발";
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                                 getBaseContext(), android.R.layout.simple_spinner_item, detail_shoes);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         detail_spinner.setAdapter(adapter);
+
+                        detail_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                String detail;
+                                using_detail = detail_spinner.getSelectedItem().toString();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
                     }
                     else if(str_outer.equals(category_spinner.getSelectedItem().toString())){
+                        using_category="아우터";
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                                 getBaseContext(), android.R.layout.simple_spinner_item, detail_outer);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         detail_spinner.setAdapter(adapter);
+                        detail_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                String detail;
+                                using_detail = detail_spinner.getSelectedItem().toString();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
                     }
 
                     else if (str_not_selected.equals(category_spinner.getSelectedItem().toString())) {
@@ -178,17 +244,45 @@ public class CodyActivity extends AppCompatActivity {
                         detail_spinner.setAdapter(adapter);
                     }
 
-                    Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
+                    final Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
                     ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
                             getBaseContext(), android.R.layout.simple_spinner_item, color);
                     adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     color_spinner.setAdapter(adapter1);
 
-                    Spinner style_spinner = (Spinner) findViewById(R.id.style_spinner);
+                    color_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            String color;
+                            using_color = color_spinner.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+
+
+
+                    final Spinner style_spinner = (Spinner) findViewById(R.id.style_spinner);
                     ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
                             getBaseContext(), android.R.layout.simple_spinner_item, style);
                     adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     style_spinner.setAdapter(adapter2);
+
+                    style_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            String style;
+                            using_style = style_spinner.getSelectedItem().toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
 
 
                 }
@@ -213,6 +307,7 @@ public class CodyActivity extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),""+using_category+"/"+using_detail+"/"+using_color+"/"+using_style,Toast.LENGTH_SHORT).show();
                 if(layoutCody.getVisibility() == View.VISIBLE){
                     layoutCloth.setVisibility(View.VISIBLE);
                     layoutCody.setVisibility(View.INVISIBLE);
