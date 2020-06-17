@@ -8,6 +8,7 @@ import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ChoiceActivity extends AppCompatActivity {
@@ -28,8 +29,8 @@ public class ChoiceActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), bundle.getString("id")+ "님 로그인 되셨습니다.", Toast.LENGTH_SHORT).show();
 
-        Button button1 = (Button)findViewById(R.id.btn_closet);
-        Button button2 = (Button)findViewById(R.id.btn_cody);
+        ImageButton button1 = (ImageButton)findViewById(R.id.btn_closet);
+        ImageButton button2 = (ImageButton)findViewById(R.id.btn_cody);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
