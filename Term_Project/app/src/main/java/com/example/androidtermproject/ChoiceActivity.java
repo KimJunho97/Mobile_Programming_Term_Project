@@ -46,6 +46,9 @@ public class ChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),CodyActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
