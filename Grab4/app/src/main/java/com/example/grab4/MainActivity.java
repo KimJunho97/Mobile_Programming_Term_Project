@@ -51,14 +51,15 @@ public class MainActivity extends AppCompatActivity {
     Button select_area;
     Button processing;
     RelativeLayout temp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImageView = (ImageView) findViewById(R.id.imgDisplay);
-//        select_img = (Button) findViewById(R.id.select_img);
-//        select_area = (Button) findViewById(R.id.select_area);
-//        processing = (Button) findViewById(R.id.processing);
+        select_img = (Button) findViewById(R.id.select_img);
+        select_area = (Button) findViewById(R.id.select_area);
+        processing = (Button) findViewById(R.id.processing);
         temp = (RelativeLayout) findViewById(R.id.main);
         dlg = new ProgressDialog(this);
         tl = new Point();
@@ -67,77 +68,90 @@ public class MainActivity extends AppCompatActivity {
             // Handle initialization error
 
         }
-//        select_img.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent getPictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
-//                getPictureIntent.setType("image/*");
-//                Intent pickPictureIntent = new Intent(Intent.ACTION_PICK,
-//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                Intent chooserIntent = Intent.createChooser(getPictureIntent, "Select Image");
-//                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {
-//                        pickPictureIntent
-//                });
-//                startActivityForResult(chooserIntent, REQUEST_OPEN_IMAGE);
-//            }
-//        });
-//        select_area.setOnClickListener(new View.OnClickListener(){
-//            @SuppressLint("ClickableViewAccessibility")
-//            @Override
-//            public void onClick(View v) {
-//                mImageView.setOnTouchListener(new View.OnTouchListener() {
-//
-//                    @SuppressLint("ClickableViewAccessibility")
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event) {
-//                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                            if (touchCount == 0) {
-//                                tl.x = event.getX();
-//                                Log.d("fuckx", String.valueOf(tl.x));
-//                                Log.d("fucky", String.valueOf(tl.y));
-//                                tl.y = event.getY();
-//                                touchCount++;
-//                            }
-//                            else if (touchCount == 1) {
-//                                br.x = event.getX();
-//                                br.y = event.getY();
-//                                Log.d("fuckx", String.valueOf(br.x));
-//                                Log.d("fucky", String.valueOf(br.y));
-//                                Paint rectPaint = new Paint();
-//                                rectPaint.setARGB(255, 255, 0, 0);
-//                                rectPaint.setStyle(Paint.Style.STROKE);
-//                                rectPaint.setStrokeWidth(3);
-//                                Bitmap tmpBm = Bitmap.createBitmap(mBitmap.getWidth(),
-//                                        mBitmap.getHeight(), Bitmap.Config.RGB_565);
-//                                Canvas tmpCanvas = new Canvas(tmpBm);
-//
-//                                tmpCanvas.drawBitmap(mBitmap, 0, 0, null);
-//                                tmpCanvas.drawRect(new RectF((float) tl.x, (float) tl.y, (float) br.x, (float) br.y),
-//                                        rectPaint);
-//                                mImageView.setImageDrawable(new BitmapDrawable(getResources(), tmpBm));
-//
-//                                targetChose = true;
-//                                touchCount = 0;
-//                                mImageView.setOnTouchListener(null);
-//                            }
-//                        }
-//
-//                        return true;
-//                    }
-//                });
-//
-//
-//            }
-//        });
-//        processing.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                if (mCurrentPhotoPath != null && targetChose) {
-//                    new ProcessImageTask().execute();
-//                    targetChose = false;
-//                }
-//            }
-//        });
+        select_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent getPictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                getPictureIntent.setType("image/*");
+                Intent pickPictureIntent = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent chooserIntent = Intent.createChooser(getPictureIntent, "Select Image");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{
+                        pickPictureIntent
+                });
+                startActivityForResult(chooserIntent, REQUEST_OPEN_IMAGE);
+            }
+        });
+        select_area.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public void onClick(View v) {
+                mImageView.setOnTouchListener(new View.OnTouchListener() {
+
+                    @SuppressLint("ClickableViewAccessibility")
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            if (touchCount == 0) {
+                                tl.x = 1;
+                                tl.y = 1;
+                                touchCount++;
+                            } else if (touchCount == 1) {
+                                br.x = mImageView.getMaxWidth();
+                                br.y = mImageView.getMaxHeight();
+                                Paint rectPaint = new Paint();
+                                rectPaint.setARGB(255, 255, 0, 0);
+                                rectPaint.setStyle(Paint.Style.STROKE);
+                                rectPaint.setStrokeWidth(3);
+                                Bitmap tmpBm = Bitmap.createBitmap(mBitmap.getWidth(),
+                                        mBitmap.getHeight(), Bitmap.Config.RGB_565);
+                                Canvas tmpCanvas = new Canvas(tmpBm);
+
+                                tmpCanvas.drawBitmap(mBitmap, 0, 0, null);
+                                tmpCanvas.drawRect(new RectF((float) tl.x, (float) tl.y, (float) br.x, (float) br.y),
+                                        rectPaint);
+                                mImageView.setImageDrawable(new BitmapDrawable(getResources(), tmpBm));
+
+                                targetChose = true;
+                                touchCount = 0;
+                                mImageView.setOnTouchListener(null);
+                            }
+                        }
+
+                        return true;
+                    }
+                });
+
+
+            }
+        });
+        processing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tl.x = 1;
+                tl.y = 1;
+                br.x = mImageView.getMaxWidth();
+                br.y = mImageView.getMaxHeight();
+                Paint rectPaint = new Paint();
+                rectPaint.setARGB(255, 255, 0, 0);
+                rectPaint.setStyle(Paint.Style.STROKE);
+                rectPaint.setStrokeWidth(3);
+                Bitmap tmpBm = Bitmap.createBitmap(mBitmap.getWidth(),
+                        mBitmap.getHeight(), Bitmap.Config.RGB_565);
+                Canvas tmpCanvas = new Canvas(tmpBm);
+
+                tmpCanvas.drawBitmap(mBitmap, 0, 0, null);
+                tmpCanvas.drawRect(new RectF((float) tl.x, (float) tl.y, (float) br.x, (float) br.y),
+                        rectPaint);
+                mImageView.setImageDrawable(new BitmapDrawable(getResources(), tmpBm));
+
+
+
+                new ProcessImageTask().execute();
+
+
+            }
+        });
     }
 
     @Override

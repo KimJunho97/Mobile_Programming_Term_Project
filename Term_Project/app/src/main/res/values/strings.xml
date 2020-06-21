@@ -52,5 +52,6 @@
     <string name="change_face">얼굴 바꾸기</string>
     <string name="go_back_state">되돌리기</string>
     <string name="save_cody">저장하기</string>
+    <string name="cut_picture">사진 자르기</string>
 
 </resources>
