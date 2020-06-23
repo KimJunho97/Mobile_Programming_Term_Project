@@ -81,7 +81,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
     ProgressDialog dlg;
     String photoPath;
 
-    //카메라
+    //camera
     public void capture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -105,7 +105,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         }
     }
 
-    //앨범
+    //album
     public void getPhoto() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 1);
@@ -183,20 +183,20 @@ public class RegisterPictureActivity extends AppCompatActivity {
         ArrayAdapter<String> category1_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_category1);
         category1_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         category1.setAdapter(category1_adapter);
-        category1.setPrompt("옷중류");
+        category1.setPrompt("type");
 
         category1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String top_str = "상의";
-                String pants_str = "하의";
-                String shoes_str = "신발";
-                String outer_str = "아우터";
-                String not_selected_str = "(선택)";
+                String top_str = "top";
+                String pants_str = "pants";
+                String shoes_str = "shoes";
+                String outer_str = "outer";
+                String not_selected_str = "select";
 
                 if (top_str.equals(category1.getSelectedItem().toString())) {
-                    //상의
+                    //top
                     ArrayAdapter<String> cloth_top_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_top);
                     cloth_top_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_top_adapter);
@@ -213,7 +213,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                         }
                     });
                 } else if (pants_str.equals(category1.getSelectedItem().toString())) {
-                    //하의
+                    //pants
                     ArrayAdapter<String> cloth_pants_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_pants);
                     cloth_pants_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_pants_adapter);
@@ -229,7 +229,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                         }
                     });
                 } else if (shoes_str.equals(category1.getSelectedItem().toString())) {
-                    //신발
+                    //shoes
                     ArrayAdapter<String> shoes_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, shoes);
                     shoes_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(shoes_adapter);
@@ -245,7 +245,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                         }
                     });
                 } else if (outer_str.equals(category1.getSelectedItem().toString())) {
-                    //아우터
+                    //outer
                     ArrayAdapter<String> cloth_outer_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, cloth_outer);
                     cloth_outer_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     category2.setAdapter(cloth_outer_adapter);
@@ -288,11 +288,11 @@ public class RegisterPictureActivity extends AppCompatActivity {
             }
         });
 
-        //색깔
+
         ArrayAdapter<String> color_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, colors);
         color_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         color.setAdapter(color_adapter);
-        color.setPrompt("색깔");
+        color.setPrompt("color");
 
         color.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -306,11 +306,11 @@ public class RegisterPictureActivity extends AppCompatActivity {
             }
         });
 
-        //스타일
+        
         ArrayAdapter<String> style_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, styles);
         style_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         style.setAdapter(style_adapter);
-        style.setPrompt("스타일");
+        style.setPrompt("stlye");
 
         style.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -327,7 +327,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
 
         Button btn_register = (Button) findViewById(R.id.register_picture);
 
-        //사진 등록 버튼
+
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -339,7 +339,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
 
         Button btn_camera = (Button) findViewById(R.id.btn_camera);
 
-        //사진 촬영 버튼
+
         btn_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -352,7 +352,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
 
         Button btn_album = (Button) findViewById(R.id.btn_album);
 
-        //앨범 선택 버튼
+
         btn_album.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -362,7 +362,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         });
 
 
-        //////////////////////////////////// 취소 버튼
+        /////
         Button btn_cancel = (Button) findViewById(R.id.btn_cancel);
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -372,7 +372,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
             }
         });
 
-        ///////////////////////////////// 옷 등록 버튼
+        ///////////////////////
         Button register_cloth = (Button) findViewById(R.id.register_cloth);
 
         register_cloth.setOnClickListener(new View.OnClickListener() {
@@ -401,12 +401,12 @@ public class RegisterPictureActivity extends AppCompatActivity {
                     }
                 });
 
-                Toast.makeText(getApplicationContext(), "등록 완료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "finish", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         });
-        // 그랩컷
+        //
         tl = new Point();
         br = new Point();
         Button cut_picture = (Button) findViewById(R.id.cut_picture);
@@ -439,13 +439,13 @@ public class RegisterPictureActivity extends AppCompatActivity {
         });
 
     }
-    ////////////////////////////////여기 까지가 onCreate
+    ///////////////////////////////
 
     ///////////////////////////////////on activityResult
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //앨범에서 사진 가져오기
+
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             try {
@@ -472,7 +472,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
             temp_getData = data.getData();
         }
 
-        //카메라로 사진을 찍은 후 사진 가져오기
+
         else if(requestCode==2){
             try {
                 switch (requestCode) {
@@ -484,7 +484,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                             bitmap = MediaStore.Images.Media
                                     .getBitmap(getContentResolver(), Uri.fromFile(file));
                             if (bitmap != null) {
-                                //사진 회전 방지
+
                                 ExifInterface ei = new ExifInterface(mCurrentPhotoPath);
                                 int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
                                         ExifInterface.ORIENTATION_UNDEFINED);
@@ -529,7 +529,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         }
     }
 
-    //////////////사진 이미지를 파일로 만들기
+    ////////////
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -546,7 +546,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
         return image;
     }
 
-    ///////사진 회전하는것 돌려주기
+    ///////
     public static Bitmap rotateImage(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
@@ -554,7 +554,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
                 matrix, true);
     }
 
-    ////////사진 경로 가져오기
+    //////
     public String getPath(Uri uri) {
 
         String[] proj = {MediaStore.Images.Media.DATA};
