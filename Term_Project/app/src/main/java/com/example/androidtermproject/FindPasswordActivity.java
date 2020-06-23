@@ -69,7 +69,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                         finish();
                     }
                 }
-
+                
                 if(state == 0){
                     Toast.makeText(getApplicationContext(), "<이름, 이메일, 아이디를 확인해주세요>", Toast.LENGTH_SHORT).show();
                 }

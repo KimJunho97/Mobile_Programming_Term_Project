@@ -412,6 +412,7 @@ public class CodyActivity extends AppCompatActivity {
         });
 
 
+
     }
 
     ///////////////////////////////////on activityResult
@@ -495,6 +496,7 @@ public class CodyActivity extends AppCompatActivity {
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
 
     ///////사진 회전하는것 돌려주기
     public static Bitmap rotateImage(Bitmap source, float angle) {

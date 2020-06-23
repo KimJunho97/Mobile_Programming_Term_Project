@@ -306,7 +306,7 @@ public class RegisterPictureActivity extends AppCompatActivity {
             }
         });
 
-        
+
         ArrayAdapter<String> style_adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, styles);
         style_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         style.setAdapter(style_adapter);
